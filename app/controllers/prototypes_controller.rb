@@ -27,12 +27,9 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @prototype.comments.includes(:user)
-     @prototype = Prototype.find(params[:id])
+    @comments = @prototype.comments
   end
-
   def edit
-    @prototype = Prototype.find(params[:id])
   end
 
   def update
@@ -44,7 +41,7 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-   @prototype = Prototype.find(params[:id])
+   @prototype = Prototype
    @prototype.destroy
    redirect_to root_path
   end
@@ -62,4 +59,5 @@ class PrototypesController < ApplicationController
   def check_user
     redirect_to root_path unless current_user == @prototype.user
   end
+
 end
