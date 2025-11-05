@@ -31,6 +31,7 @@ class PrototypesController < ApplicationController
     @comments = @prototype.comments
   end
   def edit
+   @prototype = Prototype.find(params[:id])
   end
 
   def update
