@@ -58,7 +58,7 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
   end
 
-  def check_user
+  def contributor_confirmation
     redirect_to root_path unless current_user == @prototype.user
   end
 
