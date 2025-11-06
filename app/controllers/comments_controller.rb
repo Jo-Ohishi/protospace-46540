@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
   def create
+
+    if params[:comment][:content].blank?
+     redirect_to prototype_path(params[:prototype_id]) and return
+    end
+
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to prototype_path(@comment.prototype)
