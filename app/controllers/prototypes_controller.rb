@@ -43,9 +43,11 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-   @prototype = Prototype
-   @prototype.destroy
-   redirect_to root_path
+   if @prototype.destroy
+    redirect_to root_path
+   else
+    redirect_to root_path
+   end
   end
 
   private
@@ -61,5 +63,4 @@ class PrototypesController < ApplicationController
   def contributor_confirmation
     redirect_to root_path unless current_user == @prototype.user
   end
-
 end
